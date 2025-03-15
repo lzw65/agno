@@ -60,7 +60,9 @@ class SessionMetrics:
                     if isinstance(value, dict):
                         for nested_key, nested_value in value.items():
                             result.prompt_tokens_details[key] = result.prompt_tokens_details.get(key, {})
-                            result.prompt_tokens_details[key][nested_key] = result.prompt_tokens_details[key].get(nested_key, 0) + nested_value
+                            result.prompt_tokens_details[key][nested_key] = (
+                                result.prompt_tokens_details[key].get(nested_key, 0) + nested_value
+                            )
                     else:
                         result.prompt_tokens_details[key] = result.prompt_tokens_details.get(key, 0) + value
 

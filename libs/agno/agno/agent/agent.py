@@ -2830,6 +2830,7 @@ class Agent:
             yield self.create_run_response(content="Reasoning started", event=RunEvent.reasoning_started)
 
         # Get the reasoning model
+        all_reasoning_steps: List[ReasoningStep] = []
         reasoning_model: Optional[Model] = self.reasoning_model
         reasoning_model_provided = reasoning_model is not None
         if reasoning_model is None and self.model is not None:
@@ -2938,7 +2939,6 @@ class Agent:
             step_count = 1
             next_action = NextAction.CONTINUE
             reasoning_messages: List[Message] = []
-            all_reasoning_steps: List[ReasoningStep] = []
             logger.debug("==== Starting Reasoning ====")
             while next_action == NextAction.CONTINUE and step_count < self.reasoning_max_steps:
                 logger.debug(f"==== Step {step_count} ====")
@@ -3011,6 +3011,7 @@ class Agent:
             yield self.create_run_response(content="Reasoning started", event=RunEvent.reasoning_started)
 
         # Get the reasoning model
+        all_reasoning_steps: List[ReasoningStep] = []
         reasoning_model: Optional[Model] = self.reasoning_model
         reasoning_model_provided = reasoning_model is not None
         if reasoning_model is None and self.model is not None:
@@ -3120,7 +3121,6 @@ class Agent:
             step_count = 1
             next_action = NextAction.CONTINUE
             reasoning_messages: List[Message] = []
-            all_reasoning_steps: List[ReasoningStep] = []
             logger.debug("==== Starting Reasoning ====")
             while next_action == NextAction.CONTINUE and step_count < self.reasoning_max_steps:
                 logger.debug(f"==== Step {step_count} ====")
